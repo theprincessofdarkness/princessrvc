@@ -1126,12 +1126,12 @@ with gr.Blocks(theme='ParityError/Anime', title="RVC") as app:
                 with gr.Row():
                     pretrained_G14 = gr.Textbox(
                         label=i18n("Enter the pre-trained base model 'G' path:"),
-                        value="assets/pretrained_v2/f0G40k.pth",
+                        value="assets/pretrained_v2/f0G32k.pth",
                         interactive=True,
                     )
                     pretrained_D15 = gr.Textbox(
                         label=i18n("Enter the pre-trained base model 'D' path:"),
-                        value="assets/pretrained_v2/f0D40k.pth",
+                        value="assets/pretrained_v2/f0D32k.pth",
                         interactive=True,
                     )
                     sr2.change(
