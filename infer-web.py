@@ -1184,55 +1184,55 @@ with gr.Blocks(theme='ParityError/Anime', title="RVC") as app:
 
         with gr.TabItem(i18n(".ckpt Processing")):
             with gr.Group():
-                gr.Markdown(value=i18n("模型融合, 可用于测试音色融合"))
+                gr.Markdown(value=i18n("Model Fusion, can be used to test the timbre of two voices."))
                 with gr.Row():
                     ckpt_a = gr.Textbox(
-                        label=i18n("A模型路径"), value="", interactive=True
+                        label=i18n("Path to Model A:"), value="", interactive=True
                     )
                     ckpt_b = gr.Textbox(
-                        label=i18n("B模型路径"), value="", interactive=True
+                        label=i18n("Path to Model B:"), value="", interactive=True
                     )
                     alpha_a = gr.Slider(
                         minimum=0,
                         maximum=1,
-                        label=i18n("A模型权重"),
+                        label=i18n("Weight of Model A:"),
                         value=0.5,
                         interactive=True,
                     )
                 with gr.Row():
                     sr_ = gr.Radio(
-                        label=i18n("目标采样率"),
+                        label=i18n("Target Sample Rate:"),
                         choices=["40k", "48k"],
                         value="40k",
                         interactive=True,
                     )
                     if_f0_ = gr.Radio(
-                        label=i18n("模型是否带音高指导"),
-                        choices=[i18n("是"), i18n("否")],
-                        value=i18n("是"),
+                        label=i18n("Will the model have Pitch Guidance (required for singing)?:"),
+                        choices=[i18n("Yes"), i18n("No")],
+                        value=i18n("Yes"),
                         interactive=True,
                     )
                     info__ = gr.Textbox(
-                        label=i18n("要置入的模型信息"),
+                        label=i18n("Place Model infomation here:"),
                         value="",
                         max_lines=8,
                         interactive=True,
                     )
                     name_to_save0 = gr.Textbox(
-                        label=i18n("保存的模型名不带后缀"),
+                        label=i18n("Saved Model Name (without .py extension):"),
                         value="",
                         max_lines=1,
                         interactive=True,
                     )
                     version_2 = gr.Radio(
-                        label=i18n("模型版本型号"),
+                        label=i18n("Model Version:"),
                         choices=["v1", "v2"],
-                        value="v1",
+                        value="v2",
                         interactive=True,
                     )
                 with gr.Row():
-                    but6 = gr.Button(i18n("融合"), variant="primary")
-                    info4 = gr.Textbox(label=i18n("输出信息"), value="", max_lines=8)
+                    but6 = gr.Button(i18n("Fuse!"), variant="primary")
+                    info4 = gr.Textbox(label=i18n("Output Log:"), value="", max_lines=8)
                 but6.click(
                     merge,
                     [
@@ -1250,27 +1250,27 @@ with gr.Blocks(theme='ParityError/Anime', title="RVC") as app:
                 )  # def merge(path1,path2,alpha1,sr,f0,info):
             with gr.Group():
                 gr.Markdown(
-                    value=i18n("修改模型信息(仅支持weights文件夹下提取的小模型文件)")
+                    value=i18n("Change Model information (only small models are supported).")
                 )
                 with gr.Row():
                     ckpt_path0 = gr.Textbox(
-                        label=i18n("模型路径"), value="", interactive=True
+                        label=i18n("Model Path:"), value="", interactive=True
                     )
                     info_ = gr.Textbox(
-                        label=i18n("要改的模型信息"),
+                        label=i18n("Input new information:"),
                         value="",
                         max_lines=8,
                         interactive=True,
                     )
                     name_to_save1 = gr.Textbox(
-                        label=i18n("保存的文件名, 默认空为和源文件同名"),
+                        label=i18n("Name of Output Model (if empty same as input)"),
                         value="",
                         max_lines=8,
                         interactive=True,
                     )
                 with gr.Row():
-                    but7 = gr.Button(i18n("修改"), variant="primary")
-                    info5 = gr.Textbox(label=i18n("输出信息"), value="", max_lines=8)
+                    but7 = gr.Button(i18n("Modify"), variant="primary")
+                    info5 = gr.Textbox(label=i18n("Output Log:"), value="", max_lines=8)
                 but7.click(
                     change_info,
                     [ckpt_path0, info_, name_to_save1],
@@ -1279,56 +1279,56 @@ with gr.Blocks(theme='ParityError/Anime', title="RVC") as app:
                 )
             with gr.Group():
                 gr.Markdown(
-                    value=i18n("查看模型信息(仅支持weights文件夹下提取的小模型文件)")
+                    value=i18n("View Model Information (only small models are supported).")
                 )
                 with gr.Row():
                     ckpt_path1 = gr.Textbox(
-                        label=i18n("模型路径"), value="", interactive=True
+                        label=i18n("Path to Model:"), value="", interactive=True
                     )
-                    but8 = gr.Button(i18n("查看"), variant="primary")
-                    info6 = gr.Textbox(label=i18n("输出信息"), value="", max_lines=8)
+                    but8 = gr.Button(i18n("View Info"), variant="primary")
+                    info6 = gr.Textbox(label=i18n("Output Log:"), value="", max_lines=8)
                 but8.click(show_info, [ckpt_path1], info6, api_name="ckpt_show")
             with gr.Group():
                 gr.Markdown(
                     value=i18n(
-                        "模型提取(输入logs文件夹下大文件模型路径),适用于训一半不想训了模型没有自动提取保存小文件模型,或者想测试中间模型的情况"
+                        "Model Extraction (use logs to extract weight from previous saved checkpoint)"
                     )
                 )
                 with gr.Row():
                     ckpt_path2 = gr.Textbox(
-                        label=i18n("模型路径"),
+                        label=i18n("Path to Model logs:"),
                         value="E:\\codes\\py39\\logs\\mi-test_f0_48k\\G_23333.pth",
                         interactive=True,
                     )
                     save_name = gr.Textbox(
-                        label=i18n("保存名"), value="", interactive=True
+                        label=i18n("Model Name:"), value="", interactive=True
                     )
                     sr__ = gr.Radio(
-                        label=i18n("目标采样率"),
+                        label=i18n("Target Sample Rate:"),
                         choices=["32k", "40k", "48k"],
                         value="40k",
                         interactive=True,
                     )
                     if_f0__ = gr.Radio(
-                        label=i18n("模型是否带音高指导,1是0否"),
+                        label=i18n("Will the model have Pitch Guidance (required for singing)?:"),
                         choices=["1", "0"],
                         value="1",
                         interactive=True,
                     )
                     version_1 = gr.Radio(
-                        label=i18n("模型版本型号"),
+                        label=i18n("Version:"),
                         choices=["v1", "v2"],
                         value="v2",
                         interactive=True,
                     )
                     info___ = gr.Textbox(
-                        label=i18n("要置入的模型信息"),
+                        label=i18n("Input Model Information:"),
                         value="",
                         max_lines=8,
                         interactive=True,
                     )
-                    but9 = gr.Button(i18n("提取"), variant="primary")
-                    info7 = gr.Textbox(label=i18n("输出信息"), value="", max_lines=8)
+                    but9 = gr.Button(i18n("Extract"), variant="primary")
+                    info7 = gr.Textbox(label=i18n("Output Log:"), value="", max_lines=8)
                     ckpt_path2.change(
                         change_info_, [ckpt_path2], [sr__, if_f0__, version_1]
                     )
