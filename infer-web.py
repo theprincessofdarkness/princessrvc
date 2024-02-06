@@ -963,7 +963,7 @@ with gr.Blocks(theme='ParityError/Anime', title="RVC") as app:
                 sr2 = gr.Radio(
                     label=i18n("Target Sample Rate:"),
                     choices=["40k", "48k", "32k"],
-                    value="40k",
+                    value="32k",
                     interactive=True,
                 )
                 if_f0_3 = gr.Radio(
