@@ -13,9 +13,7 @@ After this, your folder should show up with a green **(venv)** to the left of it
 
 After installing requirements, you are going to need a few files first before Inference or Training:
 
-Hubert: https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/hubert_base.pt?download=true - **Place this in `assets\hubert`**
-RMVPE.py: https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/rmvpe.pt?download=true - **Place this in `assets\rmvpe`**
-Pretrains (For V2): https://mega.nz/file/lfUW1RwR#24sVZMyxDIr5jsh3fPb0x7Jy5becXukycrrJ1xIwsQg - **Place this in `assets\pretrained_v2`**
+To do this simply run the command: `python tools/download_models.py` 
 
 To start RVC (ensure your venv environment is initialised with `.\[venvname]\Scripts\activate`:
 
