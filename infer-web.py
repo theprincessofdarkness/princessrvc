@@ -1102,7 +1102,7 @@ with gr.Blocks(theme='ParityError/Anime', title="RVC") as app:
                         interactive=True,
                     )
                     if_save_latest13 = gr.Radio(
-                        label=i18n("Save only the latest '.ckpt' to save disk space:"),
+                        label=i18n("Save only the latest '.ckpt' to save disk space?:"),
                         choices=[i18n("Yes"), i18n("No")],
                         value=i18n("Yes"),
                         interactive=True,
