@@ -64,3 +64,5 @@ if __name__ == "__main__":
         "VR-DeEchoNormal.pth",
 
     print("All models downloaded!")
+
+    ]
