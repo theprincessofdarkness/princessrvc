@@ -1104,7 +1104,7 @@ with gr.Blocks(theme='ParityError/Anime', title="RVC") as app:
                     if_save_latest13 = gr.Radio(
                         label=i18n("Save only the latest '.ckpt' to save disk space:"),
                         choices=[i18n("Yes"), i18n("No")],
-                        value=i18n("No"),
+                        value=i18n("Yes"),
                         interactive=True,
                     )
                     if_cache_gpu17 = gr.Radio(
@@ -1117,7 +1117,7 @@ with gr.Blocks(theme='ParityError/Anime', title="RVC") as app:
                     )
                     if_save_every_weights18 = gr.Radio(
                         label=i18n(
-                            "是否在每次保存时间点将最终小模型保存至weights文件夹"
+                            "Save a model to the 'weights' folder at each checkpoint?:"
                         ),
                         choices=[i18n("Yes"), i18n("No")],
                         value=i18n("No"),
